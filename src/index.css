@@ -16,6 +16,7 @@
 .main-image{
   width: 50vw;
   height: 60vh;
+  object-fit: cover;
 }
 h1{
   font-weight: 1000;
@@ -76,11 +77,13 @@ h1{
 .reset{
   border: 2px solid black;
   color: black;
-  background-color: white;
-  padding: 4px 2px;
+  padding: 6px 4px;
   border-radius: 5px;
   margin: 5%;
   width: 30vw;
+  background-color: green;
+  opacity: .7;
+  color: white;
 }
 .reset:hover{
   background-color: black;
@@ -88,12 +91,13 @@ h1{
 }
 .rules{
   border: 2px solid black;
-  color: black;
   padding: 4px 2px;
   border-radius: 5px;
   margin: 3% 5%;
   width: 30vw;
-  background-color: white;
+  background-color: red;
+  opacity: .8;
+  color: white;
 }
 .rules:hover{
   background-color: black;
@@ -107,15 +111,19 @@ p{
 }
 .rules-book{
   display: flex;
-  background-color: rgb(255, 204, 204);
+  background-color: rgb(204, 229, 255);
   flex-direction: column;
   gap: 7px;
-
 }
 .rules-book h2{
-
+   margin: 0 auto;
+   color: green;
 }
 .rules-list{
   font-size: 16px;
-
+  list-style:none;
+}
+.rules-list li{
+   font-size: 18px;
+   color: brown;
 }

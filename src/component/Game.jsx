@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Numberbox from './Numberbox'
 import styled from 'styled-components'
 import RoleDice from './RoleDice'
@@ -11,7 +11,8 @@ export default function Game({isselected}) {
   const [score,setscore]=useState(0);
   const [error,seterror]=useState("");
   const [rules,setrules]=useState(false);
-  
+  const downref=useRef(null);
+
   const generaterandomNumber=(min,max)=>{
     return Math.floor(Math.random()*(max-min)+min);
 }
@@ -31,9 +32,19 @@ const roledice=()=>{
       setselectednumber(undefined);
     }
  const reset=()=>{
-       setscore(0);
-       
+       setscore(0); 
  }
+ const handleclick=()=>{
+       if(!rules){
+        setrules(true);
+        setTimeout(() => {
+          downref.current?.scrollIntoView({behaviour:"smooth"});
+        }, 0);
+       }else{
+        setrules(false);
+       }
+ };
+ 
   return (
      
     <div className='game-page'>
@@ -54,9 +65,9 @@ const roledice=()=>{
             <h3>Click on Dice to roll</h3>
             <button onClick={reset} className='reset'>Reset Score</button>
             <button  
-            onClick={()=>setrules(prev=>!prev)}
+            onClick={handleclick}
             className='rules'>{rules ? "Hide" :"Show"} Rules</button>
-            {rules && <Rules />}
+            {rules && <Rules downref={downref}/>}
         </div>
     </div>
   )
